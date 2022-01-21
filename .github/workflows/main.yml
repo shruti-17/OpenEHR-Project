@@ -67,8 +67,8 @@ jobs:
             #Now we have got the access of EC2 and we will start the deploy .
             sudo kill -9 $(sudo lsof -t -i:4005)
             pwd
-            docker pull 921079650/eapr.group.c
-            docker run -d -p 80:3000 --name eapr 921079650/eapr.group.c
+            sudo docker pull 921079650/eapr.group.c
+            sudo docker run -d -p 80:3000 --name eapr 921079650/eapr.group.c
             '
 
 
