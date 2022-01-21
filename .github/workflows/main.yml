@@ -15,19 +15,19 @@ jobs:
     - name: Build the docker_compose
       run: docker-compose build
       
-    - name: Docker login
-      env:
-        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}   
-        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}  
-      run: |
-        docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-    - name: Docker build
-      run: |
-        docker build . --file Dockerfile --tag 921079650/eapr.group.c:latest
+#     - name: Docker login
+#       env:
+#         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}   
+#         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}  
+#       run: |
+#         docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+#     - name: Docker build
+#       run: |
+#         docker build . --file Dockerfile --tag 921079650/eapr.group.c:latest
 
-    -  name: Docker push
-       run: |
-        docker push 921079650/eapr.group.c
+#     -  name: Docker push
+#        run: |
+#         docker push 921079650/eapr.group.c
 
   deploy-to-test:
     # Only run this job if "build" has ended successfully
