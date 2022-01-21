@@ -69,6 +69,7 @@ jobs:
             pwd
             docker pull 921079650/eapr.group.c
             docker run -d -p 80:3000 --name eapr 921079650/eapr.group.c
+            '
 
 
       
