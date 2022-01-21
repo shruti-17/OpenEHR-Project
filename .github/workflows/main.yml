@@ -8,7 +8,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 3
 
     steps:
     - uses: actions/checkout@v2
@@ -84,11 +83,7 @@ jobs:
               git clone https://github.com/shruti-17/OpenEHR-Project.git
               cd OpenEHR-Project
               echo hi
-              sudo docker-compose up --build
+              sudo docker-compose up -d --build
             fi
             '
-
-      - name: STOP  EC2
-        run: |
-          exit
       
