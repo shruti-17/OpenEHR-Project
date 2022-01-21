@@ -79,6 +79,8 @@ jobs:
             else
               echo "NOT EXISTS"
               git clone https://github.com/shruti-17/OpenEHR-Project.git
+              cd OpenEHR-Project
+              echo hi    
               exit 1
             fi
             sudo docker-compose up --build
