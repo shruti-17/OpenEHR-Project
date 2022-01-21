@@ -85,7 +85,7 @@ jobs:
               echo hi
               sudo docker-compose up --build
             fi
-            exit
+            ~.
             
             '
 
