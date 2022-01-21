@@ -76,14 +76,15 @@ jobs:
               git fetch --all &&
               git reset --hard origin/master &&
               git pull origin master
+              sudo docker-compose up --build
+
             else
               echo "NOT EXISTS"
               git clone https://github.com/shruti-17/OpenEHR-Project.git
               cd OpenEHR-Project
-              echo hi    
-              exit 1
+              echo hi
+              sudo docker-compose up --build
             fi
-            sudo docker-compose up --build
             
             '
 
