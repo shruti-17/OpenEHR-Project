@@ -67,8 +67,22 @@ jobs:
             #Now we have got the access of EC2 and we will start the deploy .
             sudo kill -9 $(sudo lsof -t -i:4005)
             pwd
-            sudo docker pull 921079650/eapr.group.c
-            sudo docker run -d -p 80:3000 --name eapr 921079650/eapr.group.c
+            DIR="OpenEHR-Project"
+            if [ -d "$DIR" ]; then
+              echo "DIRECTORY EXISTS"
+              cd OpenEHR-Project
+              echo hi
+              git checkout master &&
+              git fetch --all &&
+              git reset --hard origin/master &&
+              git pull origin master
+            else
+              echo "NOT EXISTS"
+              git clone https://github.com/shruti-17/OpenEHR-Project.git
+              exit 1
+            fi
+            sudo docker-compose up --build
+            
             '
 
 
