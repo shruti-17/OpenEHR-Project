@@ -86,9 +86,9 @@ jobs:
               echo hi
               sudo docker-compose up --build
             fi
-            ~.
-            
             '
 
-
+      - name: STOP  EC2
+        run: |
+          exit
       
