@@ -7,6 +7,7 @@ on:
 
 jobs:
   test:
+  
     runs-on: ubuntu-latest
     steps:
     
@@ -26,7 +27,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
-    - name: Build the docker_compose
+    - name: Build the docker compose
       run: docker-compose build
         
     - name: Docker login
@@ -35,6 +36,7 @@ jobs:
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}  
       run: |
         docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+        
     - name: Docker build
       run: |
         docker build . --file Dockerfile --tag 921079650/eapr.group.c:latest
@@ -43,8 +45,9 @@ jobs:
        run: |
         docker push 921079650/eapr.group.c
 
-  deploy-to-test:
+  deploy:
     # Only run this job if "build" has ended successfully
+    
     needs:
       - build
       
@@ -58,8 +61,6 @@ jobs:
           unzip awscliv2.zip
           sudo ./aws/install --update
       
-
-
       # Configure AWS Credentials
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
@@ -68,7 +69,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ap-south-1
 
-      - name: CONNECT TO EC2
+      - name: Connect TO EC2 Instance
         env:
             PRIVATE_KEY: ${{ secrets.AWS_PRIVATE_KEY  }}
             HOSTNAME : ${{ secrets.HOSTNAME  }}
